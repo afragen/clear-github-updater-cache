@@ -9,10 +9,16 @@
  * GitHub Plugin URI: https://github.com/afragen/clear-github-updater-cache
  */
 
-//ajf_github_updater_delete_all_transients();
-///return;
-add_action( 'init', function(){
-	deactivate_plugins( 'clear-github-updater-cache.php' );
+/**
+ * Run once and deactivate.
+ */
+add_action( 'init', function() {
+	ajf_github_updater_delete_all_transients();
+	$this_plugin = array(
+		'clear-github-updater-cache/clear-github-updater-cache.php',
+		'clear-github-updater-cache-master/clear-github-updater-cache.php',
+	);
+	deactivate_plugins( $this_plugin );
 } );
 
 /**
