@@ -4,7 +4,7 @@
  * Plugin URI:        https://github.com/afragen/clear-github-updater-cache
  * Description:       Deletes the GitHub Updater transients from the database.
  * Author:            Andy Fragen
- * Version:           0.1
+ * Version:           0.2
  * Author URI:        https://github.com/afragen/
  * GitHub Plugin URI: https://github.com/afragen/clear-github-updater-cache
  */
@@ -33,7 +33,7 @@ function ajf_github_updater_delete_all_transients() {
 	$column        = is_multisite() ? 'meta_key' : 'option_name';
 	$delete_string = 'DELETE FROM ' . $table . ' WHERE ' . $column . ' LIKE %s LIMIT 1000';
 
-	$wpdb->query( $wpdb->prepare( $delete_string, array( '%_ghu-%' ) ) );
+	$wpdb->query( $wpdb->prepare( $delete_string, array( '%ghu-%' ) ) );
 
 	return true;
 }
